@@ -1,7 +1,16 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import Background from './Home.jpeg';
+import './Home.component.css';
+
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container'
+import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
+
+import Twitter from '@material-ui/icons/Twitter';
+import Facebook from '@material-ui/icons/Facebook';
+import LinkedIn from '@material-ui/icons/LinkedIn';
+import Github from '@material-ui/icons/GitHub';
 
 const Home = (props) => {
   const { classes } = props;
@@ -10,24 +19,30 @@ const Home = (props) => {
     <div className={classes.root}>
       <Grid
         container
-        spacing={0}
-        direction="column"
         alignItems="center"
+        direction="column"
         justify="center"
-        style={{ height: "100%" }}
-      >
-        <Grid item xs={3}>
-          <Container className={classes.container}>
-            <h1>Home</h1>
-            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-            <table>
-            <td><tr>ONE</tr></td>
-            <td><tr>TWO</tr></td>
-            <td><tr>THREE</tr></td>
-            <td><tr>FOUR</tr></td>
-            <td><tr>FIVE</tr></td>
-            </table>
-          </Container>
+        className={classes.mainGrid}>
+        <Typography variant="h3" component="h3" className={classes.me}>
+          RODRIGO PAMPIN
+        </Typography>
+        <Typography variant="subtitle1" component="p" className="what">
+          FULL STACK DEVELOPER
+        </Typography>
+        <Grid item xs={12}>
+        {/* process.env.PORT || '3001' */}
+          <IconButton target="_blank" href="http://www.twitter.com/">
+            <Twitter fontSize="large" className="social-button" />
+          </IconButton>
+          <IconButton target="_blank" href="http://www.facebook.com/">
+            <Facebook fontSize="large" className="social-button" />
+          </IconButton>
+          <IconButton target="_blank" href="http://www.github.com/">
+            <Github fontSize="large" className="social-button" />
+          </IconButton>
+          <IconButton target="_blank" href="http://www.linkedin.com/">
+            <LinkedIn fontSize="large" className="social-button" />
+          </IconButton>
         </Grid>
       </Grid>
     </div>
@@ -36,10 +51,23 @@ const Home = (props) => {
 
 const styles = theme => ({
   root: {
-    backgroundColor: 'darkgrey'
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gridTemplateRows: "100vh",
+    alignItems: "center",
+    justifyItems: "center",
+    backgroundImage: `url(${Background})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
   },
-  container: {
+  mainGrid: {
+    color: 'white',
+    padding: '1.5em',
     backgroundColor: 'black'
+  },
+  me: {
+    textAlign: 'center'
   }
 });
 
