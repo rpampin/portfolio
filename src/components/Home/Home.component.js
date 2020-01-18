@@ -1,6 +1,5 @@
 import React from 'react';
 import Background from './Home.jpeg';
-import './Home.component.css';
 
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -23,25 +22,24 @@ const Home = (props) => {
         direction="column"
         justify="center"
         className={classes.mainGrid}>
-        <Typography variant="h3" component="h3" className={classes.me}>
+        <Typography variant="h2" component="h2" className={classes.me}>
           RODRIGO PAMPIN
         </Typography>
-        <Typography variant="subtitle1" component="p" className="what">
+        <Typography variant="h5" component="h5" className={classes.what}>
           FULL STACK DEVELOPER
         </Typography>
         <Grid item xs={12}>
-        {/* process.env.PORT || '3001' */}
-          <IconButton target="_blank" href="http://www.twitter.com/">
-            <Twitter fontSize="large" className="social-button" />
+          <IconButton target="_blank" href={process.env.REACT_APP_TWITTER || 'http://www.twitter.com/'}>
+            <Twitter fontSize="large" className={classes.socialIcon} />
           </IconButton>
-          <IconButton target="_blank" href="http://www.facebook.com/">
-            <Facebook fontSize="large" className="social-button" />
+          <IconButton target="_blank" href={process.env.FACEBOOK || 'http://www.facebook.com/'}>
+            <Facebook fontSize="large" className={classes.socialIcon} />
           </IconButton>
-          <IconButton target="_blank" href="http://www.github.com/">
-            <Github fontSize="large" className="social-button" />
+          <IconButton target="_blank" href={process.env.GITHUB || 'http://www.github.com/'}>
+            <Github fontSize="large" className={classes.socialIcon} />
           </IconButton>
-          <IconButton target="_blank" href="http://www.linkedin.com/">
-            <LinkedIn fontSize="large" className="social-button" />
+          <IconButton target="_blank" href={process.env.LINKEDIN || 'http://www.linkedin.com/'}>
+            <LinkedIn fontSize="large" className={classes.socialIcon} />
           </IconButton>
         </Grid>
       </Grid>
@@ -64,10 +62,27 @@ const styles = theme => ({
   mainGrid: {
     color: 'white',
     padding: '1.5em',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    "& > *": {
+      margin: '.75rem'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 'auto',
+      padding: '2em',
+      borderRadius: '2em'
+    }
   },
   me: {
-    textAlign: 'center'
+    textAlign: 'center',
+    border: '.25rem solid white',
+    borderRight: 0,
+    borderLeft: 0
+  },
+  what: {
+
+  },
+  socialIcon: {
+    color: 'white'
   }
 });
 
