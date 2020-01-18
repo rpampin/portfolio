@@ -70,11 +70,14 @@ const styles = theme => ({
       width: 'auto',
       padding: '2em',
       borderRadius: '2em'
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '1.5em 0 1.5em 0'
     }
   },
   me: {
     textAlign: 'center',
-    border: '.25rem solid white',
+    border: '.2rem solid white',
     borderRight: 0,
     borderLeft: 0
   },
