@@ -61,19 +61,19 @@ const Tech = props => {
 
   const showTechs = techs.map(t => (
     <Grid item>
-      <Paper elevation={3} style={{ padding: "1em", width: "12em" }}>
+      <Paper elevation={3} className={classes.tech}>
         <Grid
           container
           direction="column"
           justify="center"
           alignItems="center"
-          spacing={2}
+          spacing={1}
         >
           <Grid item>
-            <img src={t.icon} width={75} height={75} alt={t.name} />
+            <img src={t.icon} className={classes.icon} alt={t.name} />
           </Grid>
           <Grid item>
-            <Typography variant="h5" component="h5" className={classes.name}>
+            <Typography variant="h6" component="h6" className={classes.name}>
               {t.name}
             </Typography>
           </Grid>
@@ -93,7 +93,7 @@ const Tech = props => {
           direction="row"
           justify="center"
           alignItems="center"
-          spacing={5}
+          spacing={2}
         >
           {showTechs}
         </Grid>
@@ -103,6 +103,14 @@ const Tech = props => {
 };
 
 const styles = theme => ({
+  tech: {
+    padding: "1em", 
+    width: "7.5em"
+  },
+  icon: {
+    width: 50,
+    height: 50
+  },
   name: {
     fontWeight: 100
   },

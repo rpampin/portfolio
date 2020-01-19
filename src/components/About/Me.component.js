@@ -9,8 +9,7 @@ const Me = props => {
   return (
     <Container maxWidth="md" className={classes.root}>
       <Typography variant="h4" className={classes.hello}>
-        Hello, my name is{" "}
-        <span style={{ fontWeight: "bold" }}>Rodrigo Pampin</span>
+        Hello, my name is <span style={{ fontWeight: "bold" }}>Rodrigo Pampin</span>
       </Typography>
       <Typography variant="h5" className={classes.what}>
         I'm a freelance full-stack developer specialized in various technologies
