@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="main-container">
       <Home />
-      <About />
       <Contact />
     </div>
   );
