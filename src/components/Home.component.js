@@ -101,45 +101,6 @@ const styles = theme => ({
       letterSpacing: ".1rem"
     }
   }
-  // root: {
-  //   display: "grid",
-  //   gridTemplateColumns: "1fr",
-  //   gridTemplateRows: "100vh",
-  //   alignItems: "center",
-  //   justifyItems: "center",
-  //   backgroundImage: `url(${Background})`,
-  //   backgroundPosition: 'center',
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'no-repeat'
-  // },
-  // mainGrid: {
-  //   color: 'white',
-  //   padding: '1.5em',
-  //   backgroundColor: 'black',
-  //   "& > *": {
-  //     margin: '.75rem'
-  //   },
-  //   [theme.breakpoints.up('md')]: {
-  //     width: 'auto',
-  //     padding: '2em',
-  //     borderRadius: '2em'
-  //   },
-  //   [theme.breakpoints.down('sm')]: {
-  //     padding: '1.5em 0 1.5em 0'
-  //   }
-  // },
-  // me: {
-  //   textAlign: 'center',
-  //   border: '.2rem solid white',
-  //   borderRight: 0,
-  //   borderLeft: 0
-  // },
-  // what: {
-
-  // },
-  // socialIcon: {
-  //   color: 'white'
-  // }
 });
 
 export default withStyles(styles)(Home);

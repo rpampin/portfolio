@@ -1,12 +1,9 @@
 import React from 'react';
-import './App.css';
-
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline, createMuiTheme, responsiveFontSizes } from "@material-ui/core";
 
-import Home from './components/Home/Home.component';
-// import About from './components/About/About.component';
-import Contact from './components/Contact/Contact.component';
+import '../styles/App.css';
+import Landing from './Landing.component';
 
 const theme = responsiveFontSizes(createMuiTheme({
   typography: {
@@ -21,10 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="main-container">
-        <Home />
-        <Contact />
-      </div>
+      <Landing />
     </ThemeProvider>
   );
 }
