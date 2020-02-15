@@ -1,8 +1,8 @@
 import React from "react";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
-import { Email } from "@material-ui/icons"
+import { Email } from "@material-ui/icons";
 import { withStyles } from "@material-ui/core/styles";
 
 class Contact extends React.Component {
@@ -27,28 +27,34 @@ class Contact extends React.Component {
     let templateParams = {
       from_name: name,
       reply_to: email,
-      message_html: message,
-    }
+      message_html: message
+    };
 
     this.setState({ buttonText: "Sending..." });
 
-    emailjs.send(
-      'gmail',
-      'template_goQxLpe7',
-      templateParams,
-      'user_cp3bVAsZiSVPoCm0KGmfb'
-    ).then((result) => {
-      console.log(result.text);
-    }, (error) => {
-      console.log(error.text);
-    }).finally(() => {
-      this.setState({
-        name: "",
-        email: "",
-        message: "",
-        buttonText: "Send"
+    emailjs
+      .send(
+        "gmail",
+        "template_goQxLpe7",
+        templateParams,
+        "user_cp3bVAsZiSVPoCm0KGmfb"
+      )
+      .then(
+        result => {
+          console.log(result.text);
+        },
+        error => {
+          console.log(error.text);
+        }
+      )
+      .finally(() => {
+        this.setState({
+          name: "",
+          email: "",
+          message: "",
+          buttonText: "Send"
+        });
       });
-    });
   }
 
   nameOnChange(e) {
@@ -73,6 +79,7 @@ class Contact extends React.Component {
         direction="column"
         justify="center"
         alignItems="center"
+        className={classes.mainGrid}
       >
         <Grid container item justify="center" lg={6} xs={10}>
           <Typography variant="h3" component="h3" className={classes.title}>
@@ -80,7 +87,11 @@ class Contact extends React.Component {
           </Typography>
         </Grid>
         <Grid container item lg={4} xs={10}>
-          <form autoComplete="off" onSubmit={this.handleSubmit} className={classes.contactForm}>
+          <form
+            autoComplete="off"
+            onSubmit={this.handleSubmit}
+            className={classes.contactForm}
+          >
             <Grid
               container
               direction="column"
@@ -117,7 +128,8 @@ class Contact extends React.Component {
                 inputProps={{ minLength: 10 }}
               />
               <Button type="submit" variant="outlined">
-                <Email />&nbsp;{buttonText}
+                <Email />
+                &nbsp;{buttonText}
               </Button>
             </Grid>
           </form>
@@ -128,6 +140,9 @@ class Contact extends React.Component {
 }
 
 const styles = theme => ({
+  mainGrid: {
+    minHeight: "100vh"
+  },
   title: {
     fontWeight: "bolder"
   },
@@ -136,7 +151,7 @@ const styles = theme => ({
     "& > .MuiGrid-root > *": {
       margin: ".25rem"
     }
-  },
+  }
 });
 
 export default withStyles(styles)(Contact);

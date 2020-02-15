@@ -90,7 +90,7 @@ const styles = theme => ({
     [theme.breakpoints.down("xs")]: {
       letterSpacing: 0,
       paddingLeft: 0,
-      paddingRight: 0,
+      paddingRight: 0
     }
   },
   subme: {
