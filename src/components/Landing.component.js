@@ -7,15 +7,20 @@ import Home from "./Home.component";
 import Contact from "./Contact.component";
 
 class Landing extends React.Component {
-  handleScroll(event) {
+  componentDidMount() {
+    this.handleScroll();
+  }
+
+  handleScroll() {
     var buttons = [
-      document.getElementById("home"),
-      document.getElementById("contact")
+      document.getElementById("homeButton"),
+      document.getElementById("contactButton")
     ];
     var container = document.getElementById("main");
-debugger;
+    
     for (var i = 0; i < buttons.length; i++) {
-      if (buttons[i].getBoundingClientRect().top === container.scrollTop) {
+      let component = document.querySelector(buttons[i].getAttribute("el-ref"));
+      if (component && component.offsetTop === container.scrollTop) {
         buttons[i].classList.add("active");
       } else {
         buttons[i].classList.remove("active");
@@ -49,11 +54,12 @@ debugger;
           <List className={classes.drawerList}>
             <ListItem key="1" className={classes.drawerListItem}>
               <IconButton
-                href="#home"
+                el-ref="#home"
+                id="homeButton"
                 className={classes.drawerButton}
                 onClick={() => {
                   let el = document.getElementById("home");
-                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                  el.scrollIntoView({ block: "end", behavior: "smooth" });
                 }}
               >
                 <Lens style={{ fontSize: 10 }} />
@@ -61,11 +67,12 @@ debugger;
             </ListItem>
             <ListItem key="2" className={classes.drawerListItem}>
               <IconButton
-                href="#contact"
+                el-ref="#contact"
+                id="contactButton"
                 className={classes.drawerButton}
                 onClick={() => {
                   let el = document.getElementById("contact");
-                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                  el.scrollIntoView({ block: "end", behavior: "smooth" });
                 }}
               >
                 <Lens style={{ fontSize: 10 }} />
@@ -96,22 +103,10 @@ debugger;
           className={classes.container}
           onScroll={this.handleScroll}
         >
-          <div
-            id="home"
-            className={classes.child}
-            ref={section => {
-              this.Home = section;
-            }}
-          >
+          <div id="home" className={classes.child}>
             <Home />
           </div>
-          <div
-            id="contact"
-            className={classes.child}
-            ref={section => {
-              this.Contact = section;
-            }}
-          >
+          <div id="contact" className={classes.child}>
             <Contact />
           </div>
         </div>
@@ -122,12 +117,12 @@ debugger;
 
 const styles = theme => ({
   container: {
-    // scrollSnapType: "y mandatory",
+    scrollSnapType: "y mandatory",
     overflowY: "scroll",
     maxHeight: "100vh"
   },
   child: {
-    // scrollSnapAlign: "start",
+    scrollSnapAlign: "start",
     height: "100vh"
   },
   drawer: {
@@ -153,7 +148,6 @@ const styles = theme => ({
   },
   drawerButton: {
     padding: 0,
-    // opacity: .5,
     "&:hover": {
       background: "transparent"
     },
