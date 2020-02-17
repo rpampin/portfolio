@@ -7,6 +7,22 @@ import Home from "./Home.component";
 import Contact from "./Contact.component";
 
 class Landing extends React.Component {
+  handleScroll(event) {
+    var buttons = [
+      document.getElementById("home"),
+      document.getElementById("contact")
+    ];
+    var container = document.getElementById("main");
+debugger;
+    for (var i = 0; i < buttons.length; i++) {
+      if (buttons[i].getBoundingClientRect().top === container.scrollTop) {
+        buttons[i].classList.add("active");
+      } else {
+        buttons[i].classList.remove("active");
+      }
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const links = [
@@ -33,6 +49,7 @@ class Landing extends React.Component {
           <List className={classes.drawerList}>
             <ListItem key="1" className={classes.drawerListItem}>
               <IconButton
+                href="#home"
                 className={classes.drawerButton}
                 onClick={() => {
                   let el = document.getElementById("home");
@@ -44,6 +61,7 @@ class Landing extends React.Component {
             </ListItem>
             <ListItem key="2" className={classes.drawerListItem}>
               <IconButton
+                href="#contact"
                 className={classes.drawerButton}
                 onClick={() => {
                   let el = document.getElementById("contact");
@@ -73,7 +91,11 @@ class Landing extends React.Component {
             ))}
           </List>
         </Drawer>
-        <div className={classes.container}>
+        <div
+          id="main"
+          className={classes.container}
+          onScroll={this.handleScroll}
+        >
           <div
             id="home"
             className={classes.child}
@@ -100,12 +122,12 @@ class Landing extends React.Component {
 
 const styles = theme => ({
   container: {
-    scrollSnapType: "y mandatory",
+    // scrollSnapType: "y mandatory",
     overflowY: "scroll",
     maxHeight: "100vh"
   },
   child: {
-    scrollSnapAlign: "start",
+    // scrollSnapAlign: "start",
     height: "100vh"
   },
   drawer: {
