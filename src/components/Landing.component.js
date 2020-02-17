@@ -1,5 +1,4 @@
 import React from "react";
-import scrollToComponent from "react-scroll-to-component";
 import { Drawer, List, ListItem, IconButton } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { Twitter, Facebook, LinkedIn, GitHub, Lens } from "@material-ui/icons";
@@ -35,13 +34,10 @@ class Landing extends React.Component {
             <ListItem key="1" className={classes.drawerListItem}>
               <IconButton
                 className={classes.drawerButton}
-                onClick={() =>
-                  scrollToComponent(this.Home, {
-                    offset: 0,
-                    align: "top",
-                    duration: 1000
-                  })
-                }
+                onClick={() => {
+                  let el = document.getElementById("home");
+                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
               >
                 <Lens style={{ fontSize: 10 }} />
               </IconButton>
@@ -49,13 +45,10 @@ class Landing extends React.Component {
             <ListItem key="2" className={classes.drawerListItem}>
               <IconButton
                 className={classes.drawerButton}
-                onClick={() =>
-                  scrollToComponent(this.Contact, {
-                    offset: 0,
-                    align: "top",
-                    duration: 1000
-                  })
-                }
+                onClick={() => {
+                  let el = document.getElementById("contact");
+                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }}
               >
                 <Lens style={{ fontSize: 10 }} />
               </IconButton>
@@ -80,19 +73,25 @@ class Landing extends React.Component {
             ))}
           </List>
         </Drawer>
-        <div className={classes.mainContainer}>
-          <section
+        <div className={classes.container}>
+          <div
+            id="home"
+            className={classes.child}
             ref={section => {
               this.Home = section;
             }}
           >
             <Home />
-          </section>
-          <Contact
+          </div>
+          <div
+            id="contact"
+            className={classes.child}
             ref={section => {
               this.Contact = section;
             }}
-          />
+          >
+            <Contact />
+          </div>
         </div>
       </div>
     );
@@ -100,10 +99,14 @@ class Landing extends React.Component {
 }
 
 const styles = theme => ({
-  mainContainer: {
-    "& > *": {
-      minHeight: "100vh"
-    }
+  container: {
+    scrollSnapType: "y mandatory",
+    overflowY: "scroll",
+    maxHeight: "100vh"
+  },
+  child: {
+    scrollSnapAlign: "start",
+    height: "100vh"
   },
   drawer: {
     "& div": {
