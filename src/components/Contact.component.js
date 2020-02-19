@@ -149,7 +149,7 @@ const styles = theme => ({
   contactForm: {
     width: "100%",
     "& > .MuiGrid-root > *": {
-      margin: ".25rem"
+      margin: ".3rem"
     }
   }
 });

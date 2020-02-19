@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { Twitter, Facebook, LinkedIn, GitHub, Lens } from "@material-ui/icons";
 
 import Home from "./Home.component";
+import About from "./About.component";
 import Contact from "./Contact.component";
 
 class Landing extends React.Component {
@@ -14,13 +15,20 @@ class Landing extends React.Component {
   handleScroll() {
     var buttons = [
       document.getElementById("homeButton"),
+      document.getElementById("aboutButton"),
       document.getElementById("contactButton")
     ];
     var container = document.getElementById("main");
-    
+    let middlePosition = container.scrollTop + container.offsetHeight / 2;
+
     for (var i = 0; i < buttons.length; i++) {
       let component = document.querySelector(buttons[i].getAttribute("el-ref"));
-      if (component && component.offsetTop === container.scrollTop) {
+      debugger;
+      if (
+        component &&
+        component.offsetTop <= middlePosition &&
+        component.offsetTop + component.offsetHeight >= middlePosition
+      ) {
         buttons[i].classList.add("active");
       } else {
         buttons[i].classList.remove("active");
@@ -59,7 +67,7 @@ class Landing extends React.Component {
                 className={classes.drawerButton}
                 onClick={() => {
                   let el = document.getElementById("home");
-                  el.scrollIntoView({ block: "end", behavior: "smooth" });
+                  el.scrollIntoView({ block: "start", behavior: "smooth" });
                 }}
               >
                 <Lens style={{ fontSize: 10 }} />
@@ -67,12 +75,25 @@ class Landing extends React.Component {
             </ListItem>
             <ListItem key="2" className={classes.drawerListItem}>
               <IconButton
+                el-ref="#about"
+                id="aboutButton"
+                className={classes.drawerButton}
+                onClick={() => {
+                  let el = document.getElementById("about");
+                  el.scrollIntoView({ block: "start", behavior: "smooth" });
+                }}
+              >
+                <Lens style={{ fontSize: 10 }} />
+              </IconButton>
+            </ListItem>
+            <ListItem key="3" className={classes.drawerListItem}>
+              <IconButton
                 el-ref="#contact"
                 id="contactButton"
                 className={classes.drawerButton}
                 onClick={() => {
                   let el = document.getElementById("contact");
-                  el.scrollIntoView({ block: "end", behavior: "smooth" });
+                  el.scrollIntoView({ block: "start", behavior: "smooth" });
                 }}
               >
                 <Lens style={{ fontSize: 10 }} />
@@ -106,6 +127,9 @@ class Landing extends React.Component {
           <div id="home" className={classes.child}>
             <Home />
           </div>
+          <div id="about" className={classes.child}>
+            <About />
+          </div>
           <div id="contact" className={classes.child}>
             <Contact />
           </div>
@@ -123,7 +147,7 @@ const styles = theme => ({
   },
   child: {
     scrollSnapAlign: "start",
-    height: "100vh"
+    minHeight: "100vh"
   },
   drawer: {
     "& div": {
