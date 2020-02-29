@@ -23,7 +23,6 @@ class Landing extends React.Component {
 
     for (var i = 0; i < buttons.length; i++) {
       let component = document.querySelector(buttons[i].getAttribute("el-ref"));
-      debugger;
       if (
         component &&
         component.offsetTop <= middlePosition &&
@@ -141,12 +140,12 @@ class Landing extends React.Component {
 
 const styles = theme => ({
   container: {
-    scrollSnapType: "y mandatory",
+    // scrollSnapType: "y mandatory",
     overflowY: "scroll",
     maxHeight: "100vh"
   },
   child: {
-    scrollSnapAlign: "start",
+    // scrollSnapAlign: "center",
     minHeight: "100vh"
   },
   drawer: {
