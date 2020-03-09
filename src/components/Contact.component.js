@@ -81,12 +81,12 @@ class Contact extends React.Component {
         alignItems="center"
         className={classes.mainGrid}
       >
-        <Grid container item justify="center" lg={6} xs={10}>
+        <Grid container item justify="center" xl={6} lg={8} xs={10}>
           <Typography variant="h3" component="h3" className={classes.title}>
             CONTACT ME
           </Typography>
         </Grid>
-        <Grid container item lg={4} xs={10}>
+        <Grid container item xl={4} lg={8} xs={10}>
           <form
             autoComplete="off"
             onSubmit={this.handleSubmit}

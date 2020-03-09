@@ -22,7 +22,14 @@ const Home = props => {
       alignItems="center"
       className={classes.mainGrid}
     >
-      <Grid container item lg={6} xs={10} style={{ justifyContent: "center" }}>
+      <Grid
+        container
+        item
+        xl={6}
+        lg={8}
+        xs={10}
+        style={{ justifyContent: "center" }}
+      >
         <Typography variant="h3" component="h3" className={classes.me}>
           RODRIGO PAMPIN
         </Typography>
@@ -30,8 +37,9 @@ const Home = props => {
       <Grid
         container
         item
-        lg={6}
-        xs={12}
+        xl={6}
+        lg={8}
+        xs={10}
         style={{ textAlign: "center", opacity: 0.75 }}
       >
         <Typography variant="h5" component="h5" className={classes.subme}>
